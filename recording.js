@@ -39,30 +39,49 @@ window.addEventListener('load', function() {
 function startCamera() {
   localStorage.removeItem('videoBlob'); // Clear any existing video in localStorage
   const video = document.getElementById('video');
-  navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-.then(stream => {
-  video.srcObject = stream;
-  video.muted = true;  // This will mute the audio from the video element (prevents echoing)
-  const options = { mimeType: 'video/webm;codecs=vp8,opus' }; // try different mime types
-  mediaRecorder = new MediaRecorder(stream, options);
+  const recordButton = document.getElementById('recordButton');
+  const initMessageContainer = document.getElementById('initMessageContainer');
 
-  mediaRecorder.ondataavailable = event => {
-    if (event.data.size > 0) {
-      recordedChunks.push(event.data);
-    }
-  };
-})
-.catch(err => {
-  console.error('Error accessing camera:', err);
-});
+  navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+    .then(stream => {
+      video.srcObject = stream;
+      video.muted = true; // Mute audio to prevent echo
+
+      console.log("Camera stream started. Waiting 15 seconds before enabling recording...");
+
+      // Hide the record button initially and show the loading message
+      recordButton.style.display = "none";
+      initMessageContainer.style.display = "block";
+
+      setTimeout(() => {
+        // After 15 seconds, show the record button and hide the message
+        recordButton.style.display = "inline-block";
+        recordButton.disabled = false;
+        initMessageContainer.style.display = "none";
+        console.log("MediaRecorder ready. Recording button enabled.");
+
+        // Initialize MediaRecorder after waiting
+        const options = { mimeType: 'video/webm;codecs=vp8,opus' };
+        mediaRecorder = new MediaRecorder(stream, options);
+
+        mediaRecorder.ondataavailable = event => {
+          if (event.data.size > 0) {
+            recordedChunks.push(event.data);
+          }
+        };
+      }, 15000); // 15-second delay
+    })
+    .catch(err => {
+      console.error('Error accessing camera:', err);
+    });
 }
 
 // Toggle function to show/hide replay, delete, and upload buttons
 function toggleButtons(show) {
-    const buttons = [replayButton, deleteButton, uploadButton];
-    buttons.forEach(button => {
-        button.classList.toggle('hidden', !show);
-    });
+  const buttons = [replayButton, deleteButton, uploadButton];
+  buttons.forEach(button => {
+      button.classList.toggle('hidden', !show);
+  });
 }
 
 //record button functionality
