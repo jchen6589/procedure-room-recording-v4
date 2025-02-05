@@ -1,6 +1,6 @@
 # Define source and destination directories
-$sourceDir = "C:\TEST" # Adjust the path to the source folder if necessary
-$destDir = "C:\EncryptedFiles" # Adjust the path to the destination folder if necessary
+$sourceDir = "C:\GCSI Procedure Room Downloads" # Adjust the path to the source folder if necessary
+$destDir = "C:\Encrypted GCSI Procedure Room Downloads" # Adjust the path to the destination folder if necessary
 $zipExePath = "C:\Program Files\7-Zip\7z.exe"  # Adjust the path to 7z.exe if necessary
 $password = "GCSI"  # Adjust password if necessary
 
