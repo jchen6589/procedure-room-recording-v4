@@ -3,7 +3,7 @@
 
 // Show start page function
 const showStartPage = () => {
-    window.location.href = './index'; //cleaner URL in github, replace with 'index.html' if running locally
+    window.location.href = './'; //cleaner URL in github, replace with 'index.html' if running locally
 };
 
 // Show recording page function
