@@ -17,12 +17,12 @@ const confirmSubmitButton = document.getElementById("confirmSubmitButton");
 ////////////////Show different pages
 // Show start page function
 const showStartPage = () => {
-    window.location.href = 'index.html';
+    window.location.href = './';
 };
 
 // Show recording page function
 const showRecordingPage = () => {
-  window.location.href = 'recording.html';
+  window.location.href = './recording';
 };
 
 

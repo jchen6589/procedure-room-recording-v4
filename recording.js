@@ -3,12 +3,12 @@
 
 // Show start page function
 const showStartPage = () => {
-    window.location.href = 'index.html';
+    window.location.href = './index';
 };
 
 // Show recording page function
 const showRecordingPage = () => {
-  window.location.href = 'recording.html';
+  window.location.href = './recording';
 };
 
 
