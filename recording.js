@@ -61,7 +61,7 @@ function startCamera() {
         console.log("MediaRecorder ready. Recording button enabled.");
 
         // Initialize MediaRecorder after waiting
-        const options = { mimeType: 'video/webm;codecs=vp8,opus' };
+        const options = { mimeType: 'video/mp4; codecs="avc1.42E01E, mp4a.40.2' };
         mediaRecorder = new MediaRecorder(stream, options);
 
         mediaRecorder.ondataavailable = event => {
@@ -116,7 +116,7 @@ function stopRecording() {
     mediaRecorder.onstop = () => {
     console.log('Recording stopped');
 
-    const blob = new Blob(recordedChunks, { type: 'video/webm' });
+    const blob = new Blob(recordedChunks, { type: 'video/mp4' });
     
     // Save the video blob to IndexedDB
     saveVideoBlobToDB(blob).then(() => {
@@ -263,7 +263,7 @@ function saveVideoBlobToDB(blob) {
     const store = transaction.objectStore('videos');
     
     // Create a File object with the proper name and type
-    const videoFile = new File([blob], 'video_recording.webm', { type: 'video/webm' });  // You can change the file extension and MIME type
+    const videoFile = new File([blob], 'video_recording.mp4', { type: 'video/mp4' });  // You can change the file extension and MIME type
     store.add(videoFile);
 
     return new Promise((resolve, reject) => {
