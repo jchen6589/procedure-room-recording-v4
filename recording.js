@@ -18,6 +18,9 @@ const showRecordingPage = () => {
 // define modal elements
 const uploadConfirmationModal = new bootstrap.Modal(document.getElementById('uploadConfirmationModal'));
 const confirmUploadButton = document.getElementById("confirmUpload");
+const deleteConfirmationModal = new bootstrap.Modal(document.getElementById('deleteConfirmationModal'));
+const confirmDeleteButton = document.getElementById("confirmDelete");
+
 
 // define buttons from html
 const recordButton = document.getElementById('recordButton');
@@ -91,7 +94,14 @@ document.getElementById('recordButton').addEventListener('click', toggleRecordin
 document.getElementById('replayButton').addEventListener('click', replayRecording);
 
 //delete button functionality
-document.getElementById('deleteButton').addEventListener('click', deleteRecording);
+document.getElementById('deleteButton').addEventListener('click', () => {
+  deleteConfirmationModal.show(); //prompt user to confirm video deletion
+});
+
+//confirm delete button functionality
+confirmDeleteButton.addEventListener("click", () => {
+  deleteRecording();
+});
 
 //upload video button functionality
 document.getElementById('uploadVideoButton').addEventListener('click', () => {
@@ -228,6 +238,7 @@ function deleteRecording() {
     console.error('Error deleting video from IndexedDB:', err);
   });
   alert('Recording deleted and reset.');
+  deleteConfirmationModal.hide();
 }
 
 
