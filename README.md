@@ -1,6 +1,7 @@
 # procedure-room-recording-v4
 ## GCSI procedure room recording system v4
--Added MediaRecorder delay to accomodate older laptop web browsers
+- Added MediaRecorder delay to accomodate older laptop web browsers
+- Updated encryption script
 
 The Recording System has the following features: 
 -	Requires minimal input from students to record and save videos.
