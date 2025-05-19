@@ -1,7 +1,11 @@
 # procedure-room-recording-v4
 ## GCSI procedure room recording system v4
-- Added MediaRecorder delay to accomodate older laptop web browsers
-- Updated encryption script
+- Prevent “Start Recording” button click until 15 seconds after page loads (to account for Windows 10 PC browser limitations)\
+- Changed “real_time_encrypt.ps1” script to reset every 10 seconds to ensure webm files are being read as they are downloaded
+- Download as .mp4 instead of .webm (added new codecs to allow audio playback as mp4)
+- Cleaner github URL (removed “.html”)
+- Removed unnecessary CSS bloat copied from website template
+
 
 The Recording System has the following features: 
 -	Requires minimal input from students to record and save videos.
